@@ -117,6 +117,7 @@ namespace DotNetCommon.Utils
 			}
 			catch(IOException e)
 			{
+				Console.WriteLine(e);
 				return false;
 			}
 		}
