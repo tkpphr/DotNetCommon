@@ -31,11 +31,10 @@ namespace DotNetCommon.Utils
 	/// </example>
 	public class FileListCache
 	{
-		private string CacheName { get; set; }
 		private int Limit { get; set; }
 		private bool CheckExistsFile { get; set; }
 		private bool CheckDistinct { get; set; }
-		public string CachePath => Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\" + CacheName + ".xml";
+		public string CachePath { get; private set; }
 		public bool Exists => File.Exists(CachePath);
 		public bool CanRead
 		{
@@ -74,13 +73,13 @@ namespace DotNetCommon.Utils
 			}
 		}
 
-		public FileListCache(string cacheName,int limit,bool checkExistsFile = true,bool checkDistinct = true)
+		public FileListCache(string cachePath,int limit,bool checkExistsFile = true,bool checkDistinct = true)
 		{
 			if (limit < 0)
 			{
 				throw new ArgumentException("limit must be greater than -1.");
 			}
-			CacheName = cacheName;
+			CachePath = cachePath;
 			Limit = limit;
 			CheckExistsFile = checkExistsFile;
 			CheckDistinct = checkDistinct;

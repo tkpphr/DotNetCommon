@@ -23,7 +23,7 @@ namespace DotNetCommon.Demo
 		public MainForm()
 		{
 			InitializeComponent();
-			RecentFiles = new FileListCache("recent",8,false);
+			RecentFiles = new FileListCache("recent.xml",8,false);
 		}
 
 		protected override void OnLoad(EventArgs e)
